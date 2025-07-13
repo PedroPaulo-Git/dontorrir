@@ -9,45 +9,45 @@ interface Service {
 const services: Service[] = [
   {
     id: 1,
-    title: "General Dentistry",
-    description: "Comprehensive dental care including cleanings, fillings, and preventive treatments.",
+    title: "Clínica Geral",
+    description: "Tratamentos completos incluindo limpeza, restaurações, extrações e cuidados preventivos para toda a família.",
     icon: "🦷",
-    color: "bg-blue-100 text-blue-600"
+    color: "var(--color-primary)"
   },
   {
     id: 2,
-    title: "Cosmetic Dentistry",
-    description: "Transform your smile with whitening, veneers, and cosmetic procedures.",
-    icon: "✨",
-    color: "bg-purple-100 text-purple-600"
+    title: "Ortodontia",
+    description: "Correção de alinhamento dos dentes com aparelhos modernos e tratamentos personalizados para todas as idades.",
+    icon: "🦿",
+    color: "var(--color-secondary)"
   },
   {
     id: 3,
-    title: "Orthodontics",
-    description: "Straighten your teeth with braces, aligners, and orthodontic treatments.",
-    icon: "🦿",
-    color: "bg-green-100 text-green-600"
+    title: "Estética Dental",
+    description: "Clareamento, facetas, lentes de contato e procedimentos para um sorriso mais bonito e confiante.",
+    icon: "✨",
+    color: "var(--color-primary)"
   },
   {
     id: 4,
-    title: "Emergency Care",
-    description: "24/7 emergency dental care for urgent dental problems and pain relief.",
-    icon: "🚨",
-    color: "bg-red-100 text-red-600"
+    title: "Implantes",
+    description: "Reposição de dentes perdidos com implantes de alta qualidade e tecnologia avançada.",
+    icon: "🦷",
+    color: "var(--color-secondary)"
   },
   {
     id: 5,
-    title: "Implants",
-    description: "Permanent tooth replacement with advanced dental implant technology.",
-    icon: "🦷",
-    color: "bg-yellow-100 text-yellow-600"
+    title: "Endodontia",
+    description: "Tratamento de canal com técnicas modernas e equipamentos de última geração.",
+    icon: "🔬",
+    color: "var(--color-primary)"
   },
   {
     id: 6,
-    title: "Pediatric Dentistry",
-    description: "Specialized dental care for children in a friendly, comfortable environment.",
-    icon: "👶",
-    color: "bg-pink-100 text-pink-600"
+    title: "Prevenção",
+    description: "Orientações de higiene bucal, aplicação de flúor e tratamentos preventivos para manter a saúde dos dentes.",
+    icon: "📚",
+    color: "var(--color-secondary)"
   }
 ];
 
@@ -58,11 +58,11 @@ export default function Services() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Our Dental Services
+            Nossos Serviços Especializados
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            We offer a comprehensive range of dental services to meet all your oral health needs. 
-            From routine checkups to advanced cosmetic procedures, we're here to help you achieve a healthy, beautiful smile.
+            Oferecemos uma gama completa de serviços odontológicos para cuidar do seu sorriso. 
+            Desde tratamentos básicos até procedimentos especializados, sempre com muito carinho e dedicação.
           </p>
         </div>
 
@@ -73,7 +73,7 @@ export default function Services() {
               key={service.id}
               className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-6 border border-gray-100"
             >
-              <div className={`w-16 h-16 ${service.color} rounded-full flex items-center justify-center text-2xl mb-4`}>
+              <div className="w-16 h-16 rounded-full flex items-center justify-center text-2xl mb-4" style={{ backgroundColor: `${service.color}20`, color: service.color }}>
                 {service.icon}
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">
@@ -82,8 +82,8 @@ export default function Services() {
               <p className="text-gray-600 leading-relaxed">
                 {service.description}
               </p>
-              <button className="mt-4 text-blue-600 font-medium hover:text-blue-700 transition-colors">
-                Learn More →
+              <button className="mt-4 font-medium transition-colors" style={{ color: service.color }}>
+                Saiba Mais →
               </button>
             </div>
           ))}
@@ -91,16 +91,23 @@ export default function Services() {
 
         {/* CTA Section */}
         <div className="text-center mt-16">
-          <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-8 text-white">
+          <div className="rounded-2xl p-8 text-white" style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-primary-dark))' }}>
             <h3 className="text-2xl font-bold mb-4">
-              Ready to Transform Your Smile?
+              Pronto para cuidar do seu sorriso?
             </h3>
-            <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
-              Schedule your consultation today and take the first step towards a healthier, more confident smile.
+            <p className="text-gray-100 mb-6 max-w-2xl mx-auto">
+              Agende sua consulta hoje e dê o primeiro passo para um sorriso saudável e bonito!
             </p>
-            <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-              Schedule Consultation
-            </button>
+            <a 
+              href="https://wa.me/5581998921500"
+              target="_blank"
+              className="bg-white px-8 py-3 rounded-lg font-semibold transition-colors inline-block"
+              style={{ color: 'var(--color-primary)' }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f3f4f6'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'white'}
+            >
+              Agendar pelo WhatsApp
+            </a>
           </div>
         </div>
       </div>

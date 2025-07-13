@@ -8,14 +8,14 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center">
-              <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+              <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ backgroundColor: 'var(--color-secondary)' }}>
                 <span className="text-white font-bold text-lg">D</span>
               </div>
-              <span className="ml-2 text-xl font-bold">DentalCare</span>
+              <span className="ml-2 text-xl font-bold">Dontorrir</span>
             </div>
             <p className="text-gray-400 leading-relaxed">
-              Providing exceptional dental care with a focus on patient comfort and satisfaction. 
-              Your smile is our priority.
+              Presente em seu sorriso! Sua clínica em Belo Jardim especializada em odontologia. 
+              Cuidamos do seu sorriso com carinho e dedicação.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
@@ -38,50 +38,50 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Services</h3>
+            <h3 className="text-lg font-semibold mb-4">Serviços</h3>
             <ul className="space-y-2">
-              <li><Link href="#services" className="text-gray-400 hover:text-white transition-colors">General Dentistry</Link></li>
-              <li><Link href="#services" className="text-gray-400 hover:text-white transition-colors">Cosmetic Dentistry</Link></li>
-              <li><Link href="#services" className="text-gray-400 hover:text-white transition-colors">Orthodontics</Link></li>
-              <li><Link href="#services" className="text-gray-400 hover:text-white transition-colors">Emergency Care</Link></li>
-              <li><Link href="#services" className="text-gray-400 hover:text-white transition-colors">Dental Implants</Link></li>
+              <li><Link href="#services" className="text-gray-400 hover:text-white transition-colors">Clínica Geral</Link></li>
+              <li><Link href="#services" className="text-gray-400 hover:text-white transition-colors">Ortodontia</Link></li>
+              <li><Link href="#services" className="text-gray-400 hover:text-white transition-colors">Estética Dental</Link></li>
+              <li><Link href="#services" className="text-gray-400 hover:text-white transition-colors">Implantes</Link></li>
+              <li><Link href="#services" className="text-gray-400 hover:text-white transition-colors">Endodontia</Link></li>
             </ul>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+            <h3 className="text-lg font-semibold mb-4">Links Rápidos</h3>
             <ul className="space-y-2">
-              <li><Link href="#home" className="text-gray-400 hover:text-white transition-colors">Home</Link></li>
-              <li><Link href="#about" className="text-gray-400 hover:text-white transition-colors">About Us</Link></li>
-              <li><Link href="#contact" className="text-gray-400 hover:text-white transition-colors">Contact</Link></li>
-              <li><Link href="#appointment" className="text-gray-400 hover:text-white transition-colors">Book Appointment</Link></li>
-              <li><Link href="#" className="text-gray-400 hover:text-white transition-colors">Patient Portal</Link></li>
+              <li><Link href="#home" className="text-gray-400 hover:text-white transition-colors">Início</Link></li>
+              <li><Link href="#about" className="text-gray-400 hover:text-white transition-colors">Sobre Nós</Link></li>
+              <li><Link href="#contact" className="text-gray-400 hover:text-white transition-colors">Contato</Link></li>
+              <li><Link href="https://wa.me/5581998921500" target="_blank" className="text-gray-400 hover:text-white transition-colors">Agendar pelo WhatsApp</Link></li>
+              <li><Link href="#" className="text-gray-400 hover:text-white transition-colors">Dicas de Saúde Bucal</Link></li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
+            <h3 className="text-lg font-semibold mb-4">Informações de Contato</h3>
             <div className="space-y-3">
               <div className="flex items-start space-x-3">
-                <svg className="w-5 h-5 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: 'var(--color-secondary)' }}>
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <p className="text-gray-400">123 Dental Street<br />Healthcare District<br />City, State 12345</p>
+                <p className="text-gray-400">Rua Monteiro Lobato, 250<br />Belo Jardim - PE<br />CEP: 55150-000</p>
               </div>
               <div className="flex items-center space-x-3">
-                <svg className="w-5 h-5 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: 'var(--color-secondary)' }}>
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                <p className="text-gray-400">(555) 123-4567</p>
+                <p className="text-gray-400">(81) 99892-1500</p>
               </div>
               <div className="flex items-center space-x-3">
-                <svg className="w-5 h-5 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: 'var(--color-secondary)' }}>
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <p className="text-gray-400">info@dentalcare.com</p>
+                <p className="text-gray-400">contato@dontorrir.com</p>
               </div>
             </div>
           </div>
@@ -91,17 +91,17 @@ export default function Footer() {
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm">
-              © 2024 DentalCare. All rights reserved.
+              © 2024 Dontorrir Odontologia Integrada. Todos os direitos reservados.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
-                Privacy Policy
+                Política de Privacidade
               </Link>
               <Link href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
-                Terms of Service
+                Termos de Uso
               </Link>
               <Link href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
-                Cookie Policy
+                Política de Cookies
               </Link>
             </div>
           </div>

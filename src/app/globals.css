@@ -1,1 +1,16 @@
 @import "tailwindcss";
+
+:root {
+  --color-primary: #7baa6a;
+  --color-secondary: #2c335a;
+  --color-primary-light: #8bb87a;
+  --color-primary-dark: #6a995a;
+  --color-secondary-light: #3a4168;
+  --color-secondary-dark: #1e2438;
+}
+
+@layer base {
+  body {
+    @apply text-gray-900;
+  }
+}

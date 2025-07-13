@@ -5,15 +5,15 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'DentalCare - Your Smile, Our Priority',
-  description: 'Experience exceptional dental care in a comfortable, modern environment. Our team of experienced professionals is dedicated to your oral health and beautiful smile.',
-  keywords: 'dentist, dental care, orthodontics, cosmetic dentistry, dental implants, emergency dental care',
-  authors: [{ name: 'DentalCare Team' }],
+  title: 'Dontorrir Odontologia Integrada - Presente em seu sorriso!',
+  description: 'Sua clínica em Belo Jardim especializada em odontologia geral. Cuidamos do seu sorriso com carinho e tecnologia avançada. Agende sua consulta!',
+  keywords: 'odontologia, dentista, Belo Jardim, clínica dental, sorriso saudável, ortodontia, estética dental, implantes, endodontia',
+  authors: [{ name: 'Dontorrir Odontologia Integrada' }],
   openGraph: {
-    title: 'DentalCare - Your Smile, Our Priority',
-    description: 'Experience exceptional dental care in a comfortable, modern environment.',
+    title: 'Dontorrir Odontologia Integrada - Presente em seu sorriso!',
+    description: 'Sua clínica em Belo Jardim especializada em odontologia geral. Cuidamos do seu sorriso com carinho e tecnologia avançada.',
     type: 'website',
-    locale: 'en_US',
+    locale: 'pt_BR',
   },
 }
 
@@ -23,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body className={inter.className}>{children}</body>
     </html>
   )
