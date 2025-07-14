@@ -24,6 +24,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
+      <head>
+        <link rel="icon" href="/assets/Logo.ico" type="image/x-icon" />
+      </head>
       <body className={inter.className}>{children}</body>
     </html>
   )

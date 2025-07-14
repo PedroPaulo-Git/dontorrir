@@ -86,9 +86,14 @@ export default function Header() {
                 Sobre Nós
               </Link>
             </motion.div>
-            <motion.div variants={navItemVariants}>
+            {/* <motion.div variants={navItemVariants}>
               <Link href="#contact" className="text-gray-700 hover:text-green-600 px-3 py-2 text-sm font-medium transition-colors" style={{ '--tw-text-opacity': '1', '--tw-hover-text-opacity': '1' } as React.CSSProperties}>
                 Contato
+              </Link>
+            </motion.div> */}
+            <motion.div variants={navItemVariants}>
+              <Link href="#mapa" className="text-gray-700 hover:text-green-600 px-3 py-2 text-sm font-medium transition-colors" style={{ '--tw-text-opacity': '1', '--tw-hover-text-opacity': '1' } as React.CSSProperties}>
+                Onde Estamos
               </Link>
             </motion.div>
           </nav>
@@ -176,12 +181,22 @@ export default function Header() {
                 Sobre Nós
               </Link>
             </motion.div>
+            {/*
             <motion.div
               whileHover={{ x: 5 }}
               transition={{ duration: 0.2 }}
             >
               <Link href="#contact" className="text-gray-700 hover:text-green-600 block px-3 py-2 text-base font-medium transition-colors">
                 Contato
+              </Link>
+            </motion.div>
+            */}
+            <motion.div
+              whileHover={{ x: 5 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Link href="#mapa" className="text-gray-700 hover:text-green-600 block px-3 py-2 text-base font-medium transition-colors">
+                Onde Estamos
               </Link>
             </motion.div>
             <motion.div
