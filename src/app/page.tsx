@@ -7,6 +7,7 @@ import ProfessionalWork from '@/components/sections/ProfessionalWork';
 import About from '@/components/sections/About';
 import Contact from '@/components/sections/Contact';
 import Footer from '@/components/layout/Footer';
+import SimpleMap from '@/components/sections/SimpleMap';
 
 export default function Home() {
   return (
@@ -16,7 +17,8 @@ export default function Home() {
       <Services />
       <ProfessionalWork />
       <About />
-      <Contact />
+      {/* <Contact /> */}
+      <SimpleMap />
       <Footer />
     </main>
   );

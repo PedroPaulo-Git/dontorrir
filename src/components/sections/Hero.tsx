@@ -51,7 +51,7 @@ export default function Hero() {
   return (
     <motion.section
       id="home"
-      className="relative bg-gradient-to-br from-gray-50 to-white pt-44 pb-16"
+      className="relative bg-gradient-to-br from-gray-50 to-white pt-32 lg:pt-44 pb-16"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
@@ -75,7 +75,7 @@ export default function Hero() {
                 </span>
               </motion.h1>
               <motion.p 
-                className="text-xl text-gray-600 leading-relaxed"
+                className="text-lg sm:text-xl text-gray-600 leading-relaxed"
                 variants={itemVariants}
               >
                 Sua clínica em Belo Jardim especializada em odontologia. 
@@ -94,7 +94,8 @@ export default function Hero() {
                 <Link
                   href="https://wa.me/5581998921500"
                   target="_blank"
-                  className="group relative overflow-hidden text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors text-center block"
+                  className="group relative overflow-hidden text-white px-4 py-3 lg:px-8 lg:py-4 rounded-lg text-sm lg:text-lg 
+                  font-semibold transition-colors text-center block"
                   style={{ backgroundColor: "var(--color-secondary)" }}
                   onMouseEnter={(e) =>
                     (e.currentTarget.style.backgroundColor =
@@ -120,7 +121,7 @@ export default function Hero() {
               >
                 <Link
                   href="#services"
-                  className="group relative overflow-hidden border-2 px-8 py-4 rounded-lg text-lg font-semibold transition-colors text-center block"
+                  className="group relative overflow-hidden border-2 rounded-lg px-4 py-2.5 lg:px-8 lg:py-3.5 text-sm lg:text-lg font-semibold transition-colors text-center block"
                   style={{
                     borderColor: "var(--color-secondary)",
                     color: "var(--color-secondary)",

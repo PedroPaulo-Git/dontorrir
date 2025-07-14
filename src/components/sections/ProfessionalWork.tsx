@@ -22,7 +22,7 @@ interface WorkCase {
 const workCases: WorkCase[] = [
   {
     id: 1,
-    title: "Clareamento Dental",
+    title: "Reabilitação Oral",
     description: "Transformação do sorriso com clareamento profissional",
     image: "/assets/Image1.jpg",
     treatment: "Clareamento",
@@ -394,14 +394,14 @@ export default function ProfessionalWork() {
               </motion.div>
 
               {/* Case Counter */}
-              <motion.div 
+              {/* <motion.div 
                 className="text-center mt-4"
                 variants={itemVariants}
               >
                 <span className="text-sm text-gray-600">
                   {currentIndex + 1} de {workCases.length} casos
                 </span>
-              </motion.div>
+              </motion.div> */}
 
               {/* Case Information - Desktop only above details panel */}
               <motion.div 

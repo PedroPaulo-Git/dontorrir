@@ -194,13 +194,13 @@ export default function About() {
               {/* Animated Background Elements */}
               <motion.div 
                 className="absolute top-0 left-0 w-32 h-32 border-2 border-white/20 rounded-full -translate-x-16 -translate-y-16"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                // animate={{ rotate: 360 }}
+                // transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
               />
               <motion.div 
                 className="absolute bottom-0 right-0 w-24 h-24 border-2 border-white/20 rounded-full translate-x-12 translate-y-12"
-                animate={{ rotate: -360 }}
-                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                // animate={{ rotate: -360 }}
+                // transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
               />
               
               <div className="relative z-10">

@@ -25,7 +25,7 @@ const services: Service[] = [
     id: 1,
     title: "Clínica Geral",
     description: "Limpeza, restaurações e cuidados preventivos para toda a família.",
-    icon: <Stethoscope className="w-8 h-8" />,
+    icon: <Stethoscope className="w-6 h-6 sm:w-8 sm:h-8" />,
     color: "var(--color-primary)",
     gradient: "from-emerald-500 to-teal-600"
   },
@@ -33,7 +33,7 @@ const services: Service[] = [
     id: 2,
     title: "Ortodontia",
     description: "Correção de alinhamento com aparelhos modernos e personalizados.",
-    icon: <Braces className="w-8 h-8" />,
+    icon: <Braces className="w-6 h-6 sm:w-8 sm:h-8" />,
     color: "var(--color-secondary)",
     gradient: "from-blue-500 to-indigo-600"
   },
@@ -41,7 +41,7 @@ const services: Service[] = [
     id: 3,
     title: "Estética Dental",
     description: "Clareamento, facetas e procedimentos para um sorriso perfeito.",
-    icon: <Sparkles className="w-8 h-8" />,
+    icon: <Sparkles className="w-6 h-6 sm:w-8 sm:h-8" />,
     color: "var(--color-primary)",
     gradient: "from-purple-500 to-pink-600"
   },
@@ -49,7 +49,7 @@ const services: Service[] = [
     id: 4,
     title: "Implantes",
     description: "Reposição de dentes com implantes de alta qualidade.",
-    icon: <Anchor className="w-8 h-8" />,
+    icon: <Anchor className="w-6 h-6 sm:w-8 sm:h-8" />,
     color: "var(--color-secondary)",
     gradient: "from-amber-500 to-orange-600"
   },
@@ -57,7 +57,7 @@ const services: Service[] = [
     id: 5,
     title: "Endodontia",
     description: "Tratamento de canal com técnicas modernas e precisão.",
-    icon: <Zap className="w-8 h-8" />,
+    icon: <Zap className="w-6 h-6 sm:w-8 sm:h-8" />,
     color: "var(--color-primary)",
     gradient: "from-cyan-500 to-blue-600"
   },
@@ -65,7 +65,7 @@ const services: Service[] = [
     id: 6,
     title: "Prevenção",
     description: "Higiene bucal, flúor e tratamentos preventivos.",
-    icon: <Shield className="w-8 h-8" />,
+    icon: <Shield className="w-6 h-6 sm:w-8 sm:h-8" />,
     color: "var(--color-secondary)",
     gradient: "from-green-500 to-emerald-600"
   }
@@ -135,7 +135,7 @@ export default function Services() {
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
             Nossos Serviços Especializados
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Oferecemos uma gama completa de serviços odontológicos para cuidar do seu sorriso. 
             Desde tratamentos básicos até procedimentos especializados, sempre com muito carinho e dedicação.
           </p>
@@ -143,7 +143,7 @@ export default function Services() {
 
         {/* Services Grid */}
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8 items-stretch"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -159,15 +159,15 @@ export default function Services() {
               whileHover={{ y: -10 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+              <div className="relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 px-2 sm:px-4 py-2 sm:py-8 h-full flex flex-col">
                 {/* Gradient Background */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
                 
                 {/* Content */}
-                <div className="relative p-8">
+                <div className="relative p-2 sm:p-8">
                   {/* Icon Container */}
                   <motion.div 
-                    className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 relative overflow-hidden`}
+                    className={`w-12 h-12 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center relative overflow-hidden`}
                     style={{ backgroundColor: `${service.color}15` }}
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     transition={{ duration: 0.3 }}
@@ -182,11 +182,11 @@ export default function Services() {
                   </motion.div>
 
                   {/* Text Content */}
-                  <div className="space-y-4">
-                    <h3 className="text-2xl font-bold text-gray-900 group-hover:text-gray-800 transition-colors">
+                  <div className="space-y-2 sm:space-y-4">
+                    <h3 className="text-lg sm:text-2xl font-bold text-gray-900 group-hover:text-gray-800 transition-colors">
                       {service.title}
                     </h3>
-                    <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors">
+                    <p className="text-xs sm:text-base text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors">
                       {service.description}
                     </p>
                   </div>
@@ -232,23 +232,23 @@ export default function Services() {
           transition={{ duration: 0.8, delay: 0.5 }}
           viewport={{ once: true }}
         >
-          <div className="relative overflow-hidden rounded-3xl p-12 text-white" style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-primary-dark))' }}>
+          <div className="relative overflow-hidden rounded-3xl p-12 text-white flex flex-col items-center" style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-primary-dark))' }}>
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-10">
               <motion.div 
                 className="absolute top-0 left-0 w-32 h-32 border-2 border-white rounded-full -translate-x-16 -translate-y-16"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                // animate={{ rotate: 360 }}
+                // transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
               />
               <motion.div 
                 className="absolute bottom-0 right-0 w-24 h-24 border-2 border-white rounded-full translate-x-12 translate-y-12"
-                animate={{ rotate: -360 }}
-                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                // animate={{ rotate: -360 }}
+                // transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
               />
               <motion.div 
                 className="absolute top-1/2 left-1/2 w-16 h-16 border border-white rounded-full -translate-x-8 -translate-y-8"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                // animate={{ rotate: 360 }}
+                // transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
               />
             </div>
             
@@ -262,7 +262,7 @@ export default function Services() {
               <motion.a 
                 href="https://wa.me/5581998921500"
                 target="_blank"
-                className="inline-flex items-center px-8 py-4 bg-white rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
+                className="inline-flex items-center px-8 py-4 mx-auto text-sm whitespace-nowrap bg-white rounded-xl font-semibold sm:text-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
                 style={{ color: 'var(--color-primary)' }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

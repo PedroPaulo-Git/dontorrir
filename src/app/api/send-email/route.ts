@@ -151,11 +151,11 @@ export async function POST(request: NextRequest) {
 
     // Send email using Resend
     const { data, error } = await resend.emails.send({
-      from: 'Dontorrir <noreply@dontorrir.com>',
-      to: ['receberpedro09@gmail.com'], // Easy to change for production
+      from: 'onboarding@resend.dev',
+      to: ['receberpedro09@gmail.com'],
       subject: `Nova Mensagem de ${name} - Dontorrir`,
       html: emailContent,
-      reply_to: email,
+      replyTo: email,
     });
 
     if (error) {

@@ -146,7 +146,7 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         <motion.div 
-          className="md:hidden"
+          className={`md:hidden ${isMenuOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
           variants={mobileMenuVariants}
           initial="hidden"
           animate={isMenuOpen ? "visible" : "hidden"}
