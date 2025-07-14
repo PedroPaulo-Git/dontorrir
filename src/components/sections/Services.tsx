@@ -2,6 +2,14 @@
 
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { 
+  Stethoscope, 
+  Braces, 
+  Sparkles, 
+  Anchor, 
+  Zap, 
+  Shield 
+} from 'lucide-react';
 
 interface Service {
   id: number;
@@ -16,82 +24,48 @@ const services: Service[] = [
   {
     id: 1,
     title: "Clínica Geral",
-    description: "Tratamentos completos incluindo limpeza, restaurações, extrações e cuidados preventivos para toda a família.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17v4a2 2 0 002 2h4M5 7a2 2 0 012-2h1a2 2 0 012 2v5a2 2 0 01-2 2H7a2 2 0 01-2-2V7z" />
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-      </svg>
-    ),
+    description: "Limpeza, restaurações e cuidados preventivos para toda a família.",
+    icon: <Stethoscope className="w-8 h-8" />,
     color: "var(--color-primary)",
     gradient: "from-emerald-500 to-teal-600"
   },
   {
     id: 2,
     title: "Ortodontia",
-    description: "Correção de alinhamento dos dentes com aparelhos modernos e tratamentos personalizados para todas as idades.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17v4a2 2 0 002 2h4M5 7a2 2 0 012-2h1a2 2 0 012 2v5a2 2 0 01-2 2H7a2 2 0 01-2-2V7z" />
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4" />
-      </svg>
-    ),
+    description: "Correção de alinhamento com aparelhos modernos e personalizados.",
+    icon: <Braces className="w-8 h-8" />,
     color: "var(--color-secondary)",
     gradient: "from-blue-500 to-indigo-600"
   },
   {
     id: 3,
     title: "Estética Dental",
-    description: "Clareamento, facetas, lentes de contato e procedimentos para um sorriso mais bonito e confiante.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-      </svg>
-    ),
+    description: "Clareamento, facetas e procedimentos para um sorriso perfeito.",
+    icon: <Sparkles className="w-8 h-8" />,
     color: "var(--color-primary)",
     gradient: "from-purple-500 to-pink-600"
   },
   {
     id: 4,
     title: "Implantes",
-    description: "Reposição de dentes perdidos com implantes de alta qualidade e tecnologia avançada.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4" />
-      </svg>
-    ),
+    description: "Reposição de dentes com implantes de alta qualidade.",
+    icon: <Anchor className="w-8 h-8" />,
     color: "var(--color-secondary)",
     gradient: "from-amber-500 to-orange-600"
   },
   {
     id: 5,
     title: "Endodontia",
-    description: "Tratamento de canal com técnicas modernas e equipamentos de última geração.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4" />
-      </svg>
-    ),
+    description: "Tratamento de canal com técnicas modernas e precisão.",
+    icon: <Zap className="w-8 h-8" />,
     color: "var(--color-primary)",
     gradient: "from-cyan-500 to-blue-600"
   },
   {
     id: 6,
     title: "Prevenção",
-    description: "Orientações de higiene bucal, aplicação de flúor e tratamentos preventivos para manter a saúde dos dentes.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4" />
-      </svg>
-    ),
+    description: "Higiene bucal, flúor e tratamentos preventivos.",
+    icon: <Shield className="w-8 h-8" />,
     color: "var(--color-secondary)",
     gradient: "from-green-500 to-emerald-600"
   }
@@ -158,7 +132,7 @@ export default function Services() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
             Nossos Serviços Especializados
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">

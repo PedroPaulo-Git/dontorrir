@@ -205,13 +205,14 @@ export default function About() {
               
               <div className="relative z-10">
                 <motion.div 
-                  className="w-32 h-32 bg-white bg-opacity-20 rounded-full mx-auto mb-6 flex items-center justify-center"
+                  className="w-32 h-32 bg-white bg-opacity-20 rounded-full mx-auto mb-6 flex items-center justify-center overflow-hidden"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <svg className="w-16 h-16" fill="currentColor" viewBox="0 0 24 24">
+                  <img src="/assets/HeroMainImage.jpg" alt="" className='object-contain mt-10 ' />
+                  {/* <svg className="w-16 h-16" fill="black" viewBox="0 0 24 24">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                  </svg>
+                  </svg> */}
                 </motion.div>
                 <h3 className="text-2xl font-bold mb-2">Dra. Ana Silva</h3>
                 <p className="text-gray-100">Odontóloga & Proprietária</p>

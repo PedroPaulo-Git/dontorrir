@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Send, CheckCircle, AlertCircle } from 'lucide-react';
 
 const contactVariants = {
   hidden: { opacity: 0 },
@@ -55,14 +56,50 @@ export default function Contact() {
     email: '',
     phone: '',
     message: '',
-    appointmentType: 'consulta'
+    service: 'consulta'
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [statusMessage, setStatusMessage] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    alert('Obrigado pela sua mensagem! Entraremos em contato em breve.');
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setStatusMessage(data.message);
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          message: '',
+          service: 'consulta'
+        });
+      } else {
+        setSubmitStatus('error');
+        setStatusMessage(data.error || 'Erro ao enviar mensagem. Tente novamente.');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+      setStatusMessage('Erro de conexão. Verifique sua internet e tente novamente.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -229,6 +266,30 @@ export default function Contact() {
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
                 Agende Sua Consulta
               </h3>
+
+              {/* Status Messages */}
+              {submitStatus === 'success' && (
+                <motion.div 
+                  className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center space-x-3"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  <p className="text-green-800 font-medium">{statusMessage}</p>
+                </motion.div>
+              )}
+
+              {submitStatus === 'error' && (
+                <motion.div 
+                  className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center space-x-3"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
+                  <AlertCircle className="w-5 h-5 text-red-600" />
+                  <p className="text-red-800 font-medium">{statusMessage}</p>
+                </motion.div>
+              )}
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <motion.div
@@ -236,7 +297,7 @@ export default function Contact() {
                     transition={{ duration: 0.2 }}
                   >
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                      Nome Completo
+                      Nome Completo *
                     </label>
                     <input
                       type="text"
@@ -245,7 +306,8 @@ export default function Contact() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent transition-colors"
+                      disabled={isSubmitting}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                       style={{ '--tw-ring-color': 'var(--color-primary)' } as React.CSSProperties}
                       placeholder="Seu nome completo"
                     />
@@ -255,7 +317,7 @@ export default function Contact() {
                     transition={{ duration: 0.2 }}
                   >
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      Email
+                      Email *
                     </label>
                     <input
                       type="email"
@@ -264,7 +326,8 @@ export default function Contact() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent transition-colors"
+                      disabled={isSubmitting}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                       style={{ '--tw-ring-color': 'var(--color-primary)' } as React.CSSProperties}
                       placeholder="seu@email.com"
                     />
@@ -277,7 +340,7 @@ export default function Contact() {
                     transition={{ duration: 0.2 }}
                   >
                     <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                      Telefone
+                      Telefone *
                     </label>
                     <input
                       type="tel"
@@ -285,7 +348,9 @@ export default function Contact() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent transition-colors"
+                      required
+                      disabled={isSubmitting}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                       style={{ '--tw-ring-color': 'var(--color-primary)' } as React.CSSProperties}
                       placeholder="(81) 99892-1500"
                     />
@@ -294,15 +359,16 @@ export default function Contact() {
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <label htmlFor="appointmentType" className="block text-sm font-medium text-gray-700 mb-2">
-                      Tipo de Serviço
+                    <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
+                      Serviço de Interesse
                     </label>
                     <select
-                      id="appointmentType"
-                      name="appointmentType"
-                      value={formData.appointmentType}
+                      id="service"
+                      name="service"
+                      value={formData.service}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent transition-colors"
+                      disabled={isSubmitting}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                       style={{ '--tw-ring-color': 'var(--color-primary)' } as React.CSSProperties}
                     >
                       <option value="consulta">Primeira Consulta</option>
@@ -322,15 +388,17 @@ export default function Contact() {
                   transition={{ duration: 0.2 }}
                 >
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Mensagem
+                    Mensagem *
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
+                    required
+                    disabled={isSubmitting}
                     rows={4}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     style={{ '--tw-ring-color': 'var(--color-primary)' } as React.CSSProperties}
                     placeholder="Conte-nos sobre suas necessidades odontológicas..."
                   />
@@ -338,15 +406,26 @@ export default function Contact() {
 
                 <motion.button
                   type="submit"
-                  className="w-full text-white py-3 px-6 rounded-lg font-semibold transition-colors"
+                  disabled={isSubmitting}
+                  className="w-full text-white py-3 px-6 rounded-lg font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
                   style={{ backgroundColor: 'var(--color-secondary)' }}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-secondary-dark)'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--color-secondary)'}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  onMouseEnter={(e) => !isSubmitting && (e.currentTarget.style.backgroundColor = 'var(--color-secondary-dark)')}
+                  onMouseLeave={(e) => !isSubmitting && (e.currentTarget.style.backgroundColor = 'var(--color-secondary)')}
+                  whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                  whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
                   transition={{ duration: 0.2 }}
                 >
-                  Enviar Mensagem
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      <span>Enviando...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      <span>Enviar Mensagem</span>
+                    </>
+                  )}
                 </motion.button>
               </form>
             </div>
